@@ -8,13 +8,14 @@ class Chronometer {
   start(printTimeCallback) {
     // ... your code goes here
     setInterval(() => {
-      printTimeCallback()
-      // this.currentTime ++;
+      this.currentTime += 1;
+      printTimeCallback();
     }, 1000);
   }
 
   getMinutes() {
     // ... your code goes here
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
