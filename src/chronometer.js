@@ -25,6 +25,8 @@ class Chronometer {
 
   computeTwoDigitNumber(value) {
     // ... your code goes here
+    const valueExtended = `0${value}`;        
+    return valueExtended.slice(-2);
   }
 
   stop() {
