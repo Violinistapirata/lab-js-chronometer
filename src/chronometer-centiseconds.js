@@ -11,28 +11,31 @@ class Chronometer {
       this.currentTime += 1;
       if (printTimeCallback) {
       printTimeCallback();
-      }
-    }, 1000);
+    }
+    console.log(this.currentTime)
+    }, 10);
   }
 
   getMinutes() {
     // ... your code goes here
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / 6000);
   }
 
   getSeconds() {
     // ... your code goes here
-    return this.currentTime % 60;
+    return Math.floor(this.currentTime  / 100 - 60 * this.getMinutes());
   }
 
   getCentiseconds() {
     // ... your code goes here
+    return this.currentTime - 6000 * this.getMinutes() - 100 * this.getSeconds();
   }
 
   computeTwoDigitNumber(value) {
     // ... your code goes here
     const valueExtended = `0${value}`;        
     return valueExtended.slice(-2);
+    
   }
 
   stop() {
@@ -49,6 +52,7 @@ class Chronometer {
     // ... your code goes here
     const minString = this.computeTwoDigitNumber(this.getMinutes())
     const secString = this.computeTwoDigitNumber(this.getSeconds())
-    return `${minString}:${secString}`
+    const centString = this.computeTwoDigitNumber(this.getCentiseconds())
+    return `${minString}:${secString}.${centString}`
   }
 }
